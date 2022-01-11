@@ -1,1 +1,9 @@
-<h1>All movies</h1>
+<h2>All movies</h2>
+
+<a href="/movies/create">Add a movie</a>
+
+<ul>
+  {{#each movies}}
+  <li>{{this.title}}</li>
+  {{/each}}
+</ul>
