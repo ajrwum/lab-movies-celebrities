@@ -30,6 +30,16 @@ router.get('/create', async (req, res, next) => {
   }
 });
 
+// - the route to display one movie's details
+router.get('/:id', async (req, res, next) => {
+  try {
+    const movie = await Movie.findById(req.params.id).populate("cast");
+    res.render('movies/movie-details', { movie });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // - the route to actually create the movie in db
 router.post('/create', async (req, res, next) => {
   try {
