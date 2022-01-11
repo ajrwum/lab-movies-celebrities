@@ -12,7 +12,8 @@ const router = require("express").Router();
 // - the route to display all celebrities
 router.get("/", async (req, res, next) => {
   try {
-    res.render('celebrities/celebrities');
+    const celebrities = await Celebrity.find();
+    res.render('celebrities/celebrities', { celebrities });
   } catch (error) {
     next(error);
   }
